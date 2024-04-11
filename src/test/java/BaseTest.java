@@ -1,4 +1,6 @@
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -20,6 +22,7 @@ public class BaseTest {
         options.addArguments("--guest");
         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
         Configuration.browserCapabilities = capabilities;
+        SelenideLogger.addListener("allure", new AllureSelenide().savePageSource(false));
 
     }
     @AfterAll

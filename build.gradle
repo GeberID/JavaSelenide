@@ -1,10 +1,25 @@
 plugins {
-    id 'java'
+    id 'java-library'
+    id 'org.gradle.test-retry' version '1.5.1'
+    id("io.qameta.allure") version "2.11.2"
 }
 
 group = 'org.example'
 version = '1.0-SNAPSHOT'
+allure{
 
+    report{
+        version.set("2.21.0")
+    }
+    adapter{
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set("2.21.0")
+            }
+        }
+    }
+}
 repositories {
     mavenCentral()
 }
@@ -14,9 +29,12 @@ dependencies {
     testImplementation ('org.junit.jupiter:junit-jupiter',
             'com.codeborne:selenide:7.1.0',
             'com.codeborne:selenide-selenoid:7.1.0',
-            'io.qameta.allure:allure-selenide:2.21.0')
+            'io.qameta.allure:allure-selenide:2.21.0',
+    )
 }
 
-test {
-    useJUnitPlatform()
+task AUTOTEST(type:Test){
+    useJUnitPlatform(){
+        includeTags 'AUTOTEST'
+    }
 }

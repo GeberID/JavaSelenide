@@ -2,6 +2,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -21,12 +22,14 @@ public class AutoTest extends BaseTest{
         $("a[data-test=\"logout-sidebar-link\"]").click();
     }
     @Test
+    @Tag("AUTOTEST")
     void test(){
         $$("div[data-test=\"inventory-item-name\"]").findBy(Condition.text("Sauce Labs Bolt T-Shirt")).click();
         $("div[data-test=\"inventory-item-price\"]").should(Condition.text("$15.99"));
     }
 
     @Test
+    @Tag("AUTOTEST")
     void test2(){
         $$("div[data-test=\"inventory-item-name\"]").findBy(Condition.text("Sauce Labs Bolt T-Shirt")).click();
         $("button[data-test=\"add-to-cart\"]").click();
