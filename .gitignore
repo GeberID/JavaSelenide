@@ -41,3 +41,15 @@ bin/
 ### Mac OS ###
 .DS_Store
 /.idea/sonarlint/issuestore/index.pb
+/.idea/.gitignore
+/.idea/sonarlint/issuestore/4/3/43e9f450cc1d05e1c35b5c2fa4533e9611ac1276
+/.idea/sonarlint/securityhotspotstore/4/3/43e9f450cc1d05e1c35b5c2fa4533e9611ac1276
+/.idea/sonarlint/issuestore/a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+/.idea/sonarlint/securityhotspotstore/a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+/.idea/sonarlint/issuestore/f/c/fc2511858bf1ab353314d4e45df333451ad676b7
+/.idea/sonarlint/securityhotspotstore/f/c/fc2511858bf1ab353314d4e45df333451ad676b7
+/gradle/wrapper/gradle-wrapper.jar
+/gradle/wrapper/gradle-wrapper.properties
+/gradlew
+/gradlew.bat
+/.idea/sonarlint/securityhotspotstore/index.pb
