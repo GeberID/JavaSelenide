@@ -42,6 +42,7 @@ class AutoTest extends BaseTest{
     @Test
     @Tag("AUTOTEST")
     void buyBikeLight(){
+        //Домашнее задание. Посмотреть что такое page object. Переписать автотест с использованием этого подхода
         $$("div[data-test=\"inventory-item-name\"]").findBy(Condition.text("Sauce Labs Bike Light")).click();
         $("button[data-test=\"add-to-cart\"]").click();
         $("a[data-test=\"shopping-cart-link\"] span[data-test=\"shopping-cart-badge\"]").should(exist,Condition.text("1"));
