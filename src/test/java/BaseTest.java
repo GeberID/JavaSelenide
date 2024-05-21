@@ -16,7 +16,7 @@ public class BaseTest {
         Configuration.pageLoadTimeout = 10_000;
         Configuration.pageLoadStrategy = "eager";
         Configuration.browser = "chrome";
-        Configuration.browserVersion = "123";
+        Configuration.browserVersion = "125";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--guest");
