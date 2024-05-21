@@ -1,13 +1,10 @@
 plugins {
-    id 'java-library'
-    id 'org.gradle.test-retry' version '1.5.1'
-    id("io.qameta.allure") version "2.11.2"
+    id 'java-library' //библиотека позволяющая собрать автотесты  (Плагин java-library расширяет возможности плагина java, наследует его возможности)
+    id("io.qameta.allure") version "2.11.2" //плагин отчета аллюра
 }
-
 group = 'org.example'
 version = '1.0-SNAPSHOT'
-allure{
-
+allure{ //стандартное подключение аллюр отчета к проекту
     report{
         version.set("2.21.0")
     }
@@ -21,19 +18,16 @@ allure{
     }
 }
 repositories {
-    mavenCentral()
+    mavenCentral() //основной публичный репозиторий с библиотеками
 }
-
-dependencies {
+dependencies { //зависимости, которые будут использоваться в проекте
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation ('org.junit.jupiter:junit-jupiter',
             'com.codeborne:selenide:7.1.0',
-            'com.codeborne:selenide-selenoid:7.1.0',
             'io.qameta.allure:allure-selenide:2.21.0',
     )
 }
-
-task AUTOTEST(type:Test){
+task AUTOTEST(type:Test){ //Задача по запуску автотестов с тегом AUTOTEST
     useJUnitPlatform(){
         includeTags 'AUTOTEST'
     }

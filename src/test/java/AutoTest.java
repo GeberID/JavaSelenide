@@ -8,15 +8,15 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-public class AutoTest extends BaseTest{
-    @BeforeEach
+class AutoTest extends BaseTest{
+    @BeforeEach // Аннотация Junit. Выполнять эти действия перед каждым автотестом
     void login(){
-        Selenide.open("https://www.saucedemo.com/");
-        $("input[data-test=\"username\"]").sendKeys("standard_user");
-        $("input[data-test=\"password\"]").sendKeys("secret_sauce");
-        $("[data-test=\"login-button\"]").click();
+        Selenide.open("https://www.saucedemo.com/"); // Метод open позволяет открыть необходимый сайт
+        $("input[data-test=\"username\"]").sendKeys("standard_user"); // Заполнение поля логин
+        $("input[data-test=\"password\"]").sendKeys("secret_sauce"); // Заполнение поля пароль
+        $("[data-test=\"login-button\"]").click(); // Клик по кнопке входа
     }
-    @AfterEach
+    @AfterEach // Аннотация Junit. Выполнять эти действия после каждого автотеста
     void logout(){
         $("div.bm-burger-button").click();
         $("a[data-test=\"logout-sidebar-link\"]").click();
