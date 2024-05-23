@@ -1,5 +1,6 @@
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
+import io.qameta.allure.Description;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
@@ -26,6 +27,7 @@ class AutoTest extends BaseTest { // extends BaseTest - Наследование
     }
     @Test
     @Tag("AUTOTEST")
+    @Description("Проверка цены на футболку в карточке")
     void checkTShirt() {
         $$("div[data-test=\"inventory-item-name\"]").findBy(Condition.text("Sauce Labs Bolt T-Shirt")).click();
         $("div[data-test=\"inventory-item-price\"]").should(Condition.text("$15.99"));
@@ -33,6 +35,7 @@ class AutoTest extends BaseTest { // extends BaseTest - Наследование
 
     @Test
     @Tag("AUTOTEST")
+    @Description("Отмена покупки футболки")
     void removeBuyTShirt() {
         $$("div[data-test=\"inventory-item-name\"]").findBy(Condition.text("Sauce Labs Bolt T-Shirt")).click();
         $("button[data-test=\"add-to-cart\"]").click();
@@ -44,6 +47,7 @@ class AutoTest extends BaseTest { // extends BaseTest - Наследование
     }
     @Test
     @Tag("AUTOTEST")
+    @Description("Покупка фонаря")
     void buyBikeLight(){
         //Домашнее задание. Посмотреть что такое page object. Переписать автотест с использованием этого подхода
         $$("div[data-test=\"inventory-item-name\"]").findBy(Condition.text("Sauce Labs Bike Light")).click();
