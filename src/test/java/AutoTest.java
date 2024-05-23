@@ -10,7 +10,8 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-class AutoTest extends BaseTest{
+class AutoTest extends BaseTest { // extends BaseTest - Наследование. Мы используем наследование для того, чтобы сократить написание кода.
+    //
     @BeforeEach // Аннотация Junit. Выполнять эти действия перед каждым автотестом
     void login(){
         Selenide.open("https://www.saucedemo.com/"); // Метод open позволяет открыть необходимый сайт
@@ -25,19 +26,21 @@ class AutoTest extends BaseTest{
     }
     @Test
     @Tag("AUTOTEST")
-    void test(){
+    void checkTShirt() {
         $$("div[data-test=\"inventory-item-name\"]").findBy(Condition.text("Sauce Labs Bolt T-Shirt")).click();
         $("div[data-test=\"inventory-item-price\"]").should(Condition.text("$15.99"));
     }
 
     @Test
     @Tag("AUTOTEST")
-    void test2(){
+    void removeBuyTShirt() {
         $$("div[data-test=\"inventory-item-name\"]").findBy(Condition.text("Sauce Labs Bolt T-Shirt")).click();
         $("button[data-test=\"add-to-cart\"]").click();
         $("span[data-test=\"shopping-cart-badge\"]").should(Condition.text("1"));
         $("a[data-test=\"shopping-cart-link\"]").click();
         $$("div[data-test=\"inventory-item-name\"]").findBy(Condition.text("Sauce Labs Bolt T-Shirt")).should(Condition.visible);
+        $("button[data-test=\"remove-sauce-labs-bolt-t-shirt\"]").click();
+        $("div[data-test=\"inventory-item\"]").shouldNot(exist);
     }
     @Test
     @Tag("AUTOTEST")
