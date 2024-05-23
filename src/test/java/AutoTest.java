@@ -1,6 +1,8 @@
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Description;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
@@ -22,6 +24,7 @@ class AutoTest extends BaseTest { // extends BaseTest - Наследование
     }
     @AfterEach // Аннотация Junit. Выполнять эти действия после каждого автотеста
     void logout(){
+        SelenideLogger.addListener("allure", new AllureSelenide());
         $("div.bm-burger-button").click();
         $("a[data-test=\"logout-sidebar-link\"]").click();
     }

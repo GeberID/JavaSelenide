@@ -1,4 +1,6 @@
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -17,6 +19,7 @@ public class BaseTest { // Класс, который содержит стат�
         options.addArguments("--guest"); // Опция гостя в браузере. Нужна, чтоб убрать лишние модальные окна самого браузера
         capabilities.setCapability(ChromeOptions.CAPABILITY, options); // Установка опций в DesiredCapabilities
         Configuration.browserCapabilities = capabilities;// Установка опций в браузер
+        SelenideLogger.addListener("allure", new AllureSelenide().savePageSource(false));
     }
     @AfterAll // Аннотация Junit. Выполнять эти действия после всех автотестов
     static void afterAll(){
